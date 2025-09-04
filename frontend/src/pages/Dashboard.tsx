@@ -53,8 +53,8 @@ const Dashboard = () => {
               <span className="text-sm font-medium">FEEDBACK</span>
             </button>
 
-            <div className="w-10 h-10 bg-emerald-500 rounded-full flex items-center justify-center">
-              <span className="text-white font-bold">{userInitial}</span>
+            <div className="w-10 h-10 bg-[#16A374] rounded-full flex items-center justify-center">
+              <span className="text-[#145340] font-bold ">{userInitial}</span>
             </div>
           </div>
         </header>
@@ -70,12 +70,12 @@ const Dashboard = () => {
 
           <div className="flex items-center space-x-3">
             <button className="flex items-center space-x-1 px-3 py-1 bg-[#1F1D17] hover:bg-yellow-700 rounded text-xs font-medium transition-colors">
-              <Crown className="w-3 h-3" />
-              <span>UPGRADE</span>
+              <Crown className="w-3 h-3 text-[#FCD34D]" />
+              <span className="text-[#FCD34D]">UPGRADE</span>
             </button>
 
-            <div className="w-8 h-8 bg-emerald-500 rounded-full flex items-center justify-center">
-              <span className="text-white font-bold text-sm">{userInitial}</span>
+            <div className="w-8 h-8 bg-[#16A374] rounded-full flex items-center justify-center">
+              <span className="text-[#145340] font-bold text-sm">{userInitial}</span>
             </div>
           </div>
         </header>
