@@ -13,7 +13,6 @@ const Login = () => {
   const [error, setError] = useState<string | null>(null);
   const [showSplash, setShowSplash] = useState(false);
 
-  // store all field errors in one object
   const [errors, setErrors] = useState<{ email?: string; password?: string }>({});
 
   const navigate = useNavigate();
@@ -29,7 +28,6 @@ const Login = () => {
     const newErrors: { email?: string; password?: string } = {};
     let valid = true;
 
-    // email validation
     if (!email) {
       newErrors.email = "Email is required";
       valid = false;
@@ -37,8 +35,6 @@ const Login = () => {
       newErrors.email = "Enter a valid email address";
       valid = false;
     }
-
-    // password validation
     if (!password) {
       newErrors.password = "Password is required";
       valid = false;
@@ -86,17 +82,13 @@ const Login = () => {
         <SplashScreen />
       ) : (
         <div className="min-h-screen bg-zinc-900 flex">
-          {/* Left Panel */}
           <div className="hidden lg:flex lg:w-1/2 bg-zinc-900 p-12 flex-col justify-between">
-            {/* Logo */}
             <div className="flex items-center space-x-3">
               <img src={logo} alt="Falconfeeds Logo" className="w-8 h-8 object-contain" />
               <span className="text-white text-xl font-semibold tracking-wide">
                 FALCONFEEDS.IO
               </span>
             </div>
-
-            {/* Main Content */}
             <div className="flex-1 flex flex-col justify-center max-w-lg">
               <h1 className="text-4xl lg:text-5xl font-bold text-white leading-tight mb-12">
                 Hunt, Identify and{" "}
@@ -115,16 +107,13 @@ const Login = () => {
               </div>
             </div>
 
-            {/* Footer */}
             <div className="flex items-center space-x-2 text-gray-500">
               <span className="text-sm">Powered by</span>
               <span className="text-sm font-medium">technisanct</span>
             </div>
           </div>
 
-          {/* Right Panel */}
           <div className="w-full lg:w-1/2 bg-zinc-800 p-8 lg:p-12 flex flex-col justify-center">
-            {/* Mobile Logo */}
             <div className="lg:hidden flex items-center space-x-3 mb-12">
               <img src={logo} alt="Falconfeeds Logo" className="w-8 h-8 object-contain" />
               <span className="text-white text-xl font-semibold tracking-wide">
@@ -133,18 +122,14 @@ const Login = () => {
             </div>
 
             <div className="max-w-md mx-auto w-full">
-              {/* Header */}
               <div className="mb-8">
                 <h2 className="text-3xl font-bold text-white mb-2">Sign in</h2>
                 <p className="text-gray-400">View latest updates and developments in CTI</p>
               </div>
 
-              {/* Server Error */}
               {error && <div className="mb-4 text-red-500 text-sm font-medium">{error}</div>}
 
-              {/* Form */}
               <form onSubmit={handleSignIn} className="space-y-6">
-                {/* Email Field */}
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
                     Email
@@ -163,8 +148,6 @@ const Login = () => {
                   />
                   {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
                 </div>
-
-                {/* Password Field */}
                 <div>
                   <label htmlFor="password" className="block text-sm font-medium text-gray-300 mb-2">
                     Password
@@ -193,7 +176,6 @@ const Login = () => {
                   {errors.password && <p className="text-red-500 text-xs mt-1">{errors.password}</p>}
                 </div>
 
-                {/* Forgot Password */}
                 <div className="text-right">
                   <button
                     type="button"
@@ -203,7 +185,6 @@ const Login = () => {
                   </button>
                 </div>
 
-                {/* Sign In Button */}
                 <button
                   type="submit"
                   disabled={loading}
@@ -212,7 +193,6 @@ const Login = () => {
                   {loading ? "Signing in..." : "Sign in"}
                 </button>
 
-                {/* Divider */}
                 <div className="relative flex items-center justify-center py-4">
                   <div className="absolute inset-0 flex items-center">
                     <div className="w-full border-t border-zinc-600"></div>
@@ -222,7 +202,6 @@ const Login = () => {
                   </div>
                 </div>
 
-                {/* Google Sign In */}
                 <button
                   type="button"
                   onClick={handleGoogleSignIn}
@@ -250,7 +229,6 @@ const Login = () => {
                 </button>
               </form>
 
-              {/* Sign Up Link */}
               <div className="mt-8 text-center">
                 <span className="text-gray-400">Don't have an account? </span>
                 <button

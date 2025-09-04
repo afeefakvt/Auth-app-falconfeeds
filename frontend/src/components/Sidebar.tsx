@@ -30,7 +30,6 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab = 'overview', onTabChange }
 
   return (
     <aside className="hidden lg:block w-64 bg-zinc-900 border-r border-zinc-800 min-h-screen">
-      {/* Company Logo */}
       <div className="p-6 border-b border-zinc-800">
         <div className="flex justify-center">
           <img 
@@ -41,7 +40,6 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab = 'overview', onTabChange }
         </div>
       </div>
 
-      {/* Navigation Items */}
       <nav className="p-6 space-y-4">
         {sidebarItems.map((item) => {
           const Icon = item.icon;

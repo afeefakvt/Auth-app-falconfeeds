@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   FileText,
   Users,
@@ -11,7 +11,7 @@ import Sidebar from "../components/Sidebar";
 import logo from '../assets/logo.png';
 import { useAuthStore } from "../store/authStore";
 
-const Dashboard: React.FC = () => {
+const Dashboard = () => {
   const [activeTab, setActiveTab] = useState("overview");
   const {user}  = useAuthStore();
 
@@ -27,21 +27,16 @@ const Dashboard: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-zinc-900 text-white flex">
-      {/* Sidebar (always left) */}
       <Sidebar activeTab={activeTab} onTabChange={setActiveTab} />
 
-      {/* Main Section */}
       <div className="flex-1 flex flex-col">
-        {/* Desktop Header */}
         <header className="hidden lg:flex items-center justify-between px-6 py-4 border-b border-zinc-800">
-          {/* Breadcrumb (left side now, no logo/text) */}
           <div className="flex items-center space-x-2 text-sm text-gray-400">
             <span>DASHBOARD</span>
             <span>/</span>
             <span className="text-white capitalize">{activeTab}</span>
           </div>
 
-          {/* Right Actions */}
           <div className="flex items-center space-x-4">
             <button className="flex items-center space-x-2 px-4 py-2 bg-[#1F1D17] hover:bg-yellow-700 rounded-lg transition-colors">
               <Crown className="w-4 h-4 text-[#FCD34D]" />
@@ -64,18 +59,15 @@ const Dashboard: React.FC = () => {
           </div>
         </header>
 
-        {/* Mobile Header */}
         <header className="lg:hidden flex items-center justify-between px-4 py-3 border-b border-zinc-800">
-          {/* Logo */}
           <div className="flex items-center space-x-2">
             <img
-              src={logo} // <-- replace with your logo image path
+              src={logo} 
               alt="Logo"
               className="w-8 h-8"
             />
           </div>
 
-          {/* Right Actions */}
           <div className="flex items-center space-x-3">
             <button className="flex items-center space-x-1 px-3 py-1 bg-[#1F1D17] hover:bg-yellow-700 rounded text-xs font-medium transition-colors">
               <Crown className="w-3 h-3" />
@@ -88,7 +80,6 @@ const Dashboard: React.FC = () => {
           </div>
         </header>
 
-        {/* Mobile Tabs */}
         <div className="lg:hidden border-b border-zinc-800">
           <nav className="flex px-2 py-2 space-x-2">
             {mobileTabItems.map((item) => {
@@ -113,7 +104,6 @@ const Dashboard: React.FC = () => {
           </nav>
         </div>
 
-        {/* Mobile Breadcrumb */}
         <div className="lg:hidden px-4 py-2 border-b border-zinc-800">
           <div className="flex items-center space-x-2 text-xs text-gray-400">
             <span>DASHBOARD</span>

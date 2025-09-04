@@ -27,10 +27,8 @@ const passwordValidationRules = {
   },
 };
 
-// Email validation regex
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-// Function to validate password
 const validatePassword = (password: string) => {
   const errors: string[] = [];
   (Object.keys(passwordValidationRules) as Array<keyof typeof passwordValidationRules>).forEach((rule) => {
@@ -49,7 +47,6 @@ const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-  // Validation state
   const [errors, setErrors] = useState<{ [key: string]: string[] }>({});
 
   const [loading, setLoading] = useState(false);
@@ -97,7 +94,6 @@ const Signup = () => {
 
   return (
     <div className="min-h-screen bg-zinc-900 flex">
-      {/* Left Panel */}
       <div className="hidden lg:flex lg:w-1/2 bg-zinc-900 p-12 flex-col justify-between">
         <div className="flex items-center space-x-3">
           <img src={logo} alt="Falconfeeds Logo" className="w-8 h-8 object-contain" />
@@ -108,7 +104,6 @@ const Signup = () => {
           <h1 className="text-4xl lg:text-5xl font-bold text-white leading-tight mb-12">
             Hunt, Identify and <span className="text-teal-400">Act</span> on <span className="text-red-400">threats</span> before they can harm you.
           </h1>
-
           <div className="space-y-6">
             {features.map((feature, index) => (
               <div key={index} className="flex items-center space-x-4">
@@ -125,7 +120,6 @@ const Signup = () => {
         </div>
       </div>
 
-      {/* Right Panel */}
       <div className="w-full lg:w-1/2 bg-zinc-800 p-8 lg:p-12 flex flex-col justify-center">
         <div className="lg:hidden flex items-center space-x-3 mb-12">
           <img src={logo} alt="Falconfeeds Logo" className="w-8 h-8 object-contain" />
@@ -141,7 +135,6 @@ const Signup = () => {
           )}
 
           <form onSubmit={handleSignUp} className="space-y-6">
-            {/* First Name */}
             <div>
               <label className="block text-sm font-medium text-gray-300 mb-2">First Name</label>
               <input
@@ -155,7 +148,6 @@ const Signup = () => {
               ))}
             </div>
 
-            {/* Last Name */}
             <div>
               <label className="block text-sm font-medium text-gray-300 mb-2">Last Name</label>
               <input
@@ -168,8 +160,6 @@ const Signup = () => {
                 <p key={idx} className="text-red-500 text-sm mt-1">{err}</p>
               ))}
             </div>
-
-            {/* Email */}
             <div>
               <label className="block text-sm font-medium text-gray-300 mb-2">Email</label>
               <input
@@ -183,8 +173,6 @@ const Signup = () => {
                 <p key={idx} className="text-red-500 text-sm mt-1">{err}</p>
               ))}
             </div>
-
-            {/* Password */}
             <div>
               <label className="block text-sm font-medium text-gray-300 mb-2">Password</label>
               <div className="relative">
@@ -207,8 +195,6 @@ const Signup = () => {
                 <p key={idx} className="text-red-500 text-sm mt-1">{err}</p>
               ))}
             </div>
-
-            {/* Confirm Password */}
             <div>
               <label className="block text-sm font-medium text-gray-300 mb-2">Confirm Password</label>
               <div className="relative">
