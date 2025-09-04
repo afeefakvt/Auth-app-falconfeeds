@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { Eye, EyeOff, CheckCircle } from "lucide-react";
-import { login } from "../api/authApi"; 
-import { useNavigate } from "react-router-dom"; 
-import logo from '../assets/logo.png'
+import { login } from "../api/authApi";
+import { useNavigate } from "react-router-dom";
+import logo from "../assets/logo.png";
 import SplashScreen from "../components/SplashScreen";
+import mark from '../assets/mark.png'
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -13,7 +14,9 @@ const Login = () => {
   const [error, setError] = useState<string | null>(null);
   const [showSplash, setShowSplash] = useState(false);
 
-  const [errors, setErrors] = useState<{ email?: string; password?: string }>({});
+  const [errors, setErrors] = useState<{ email?: string; password?: string }>(
+    {}
+  );
 
   const navigate = useNavigate();
 
@@ -38,7 +41,7 @@ const Login = () => {
     if (!password) {
       newErrors.password = "Password is required";
       valid = false;
-    } 
+    }
 
     setErrors(newErrors);
     return valid;
@@ -84,38 +87,48 @@ const Login = () => {
         <div className="min-h-screen bg-zinc-900 flex">
           <div className="hidden lg:flex lg:w-1/2 bg-zinc-900 p-12 flex-col justify-between">
             <div className="flex items-center space-x-3">
-              <img src={logo} alt="Falconfeeds Logo" className="w-8 h-8 object-contain" />
+              <img
+                src={logo}
+                alt="Falconfeeds Logo"
+                className="w-8 h-8 object-contain"
+              />
               <span className="text-white text-xl font-semibold tracking-wide">
                 FALCONFEEDS.IO
               </span>
             </div>
             <div className="flex-1 flex flex-col justify-center max-w-lg">
               <h1 className="text-4xl lg:text-5xl font-bold text-white leading-tight mb-12">
-                Hunt, Identify and{" "}
-                <span className="text-teal-400">Act</span> on{" "}
-                <span className="text-red-400">threats</span> before they can harm
-                you.
+                Hunt, Identify and <span className="text-[#16A374]">Act</span>{" "}
+                on <span className="text-[#EB2F2F]">threats</span> before they
+                can harm you.
               </h1>
 
               <div className="space-y-6">
                 {features.map((feature, index) => (
                   <div key={index} className="flex items-center space-x-4">
-                    <CheckCircle className="w-5 h-5 text-teal-400 flex-shrink-0" />
+                    <CheckCircle className="w-5 h-5 text-[#16A374] flex-shrink-0" />
                     <span className="text-gray-300 text-lg">{feature}</span>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="flex items-center space-x-2 text-gray-500">
-              <span className="text-sm">Powered by</span>
-              <span className="text-sm font-medium">technisanct</span>
+            <div className="flex items-center space-x-2">
+              <img
+                src={mark}
+                alt="Watermark"
+                className="h-6 object-contain"
+              />
             </div>
           </div>
 
           <div className="w-full lg:w-1/2 bg-zinc-800 p-8 lg:p-12 flex flex-col justify-center">
             <div className="lg:hidden flex items-center space-x-3 mb-12">
-              <img src={logo} alt="Falconfeeds Logo" className="w-8 h-8 object-contain" />
+              <img
+                src={logo}
+                alt="Falconfeeds Logo"
+                className="w-8 h-8 object-contain"
+              />
               <span className="text-white text-xl font-semibold tracking-wide">
                 FALCONFEEDS.IO
               </span>
@@ -124,14 +137,23 @@ const Login = () => {
             <div className="max-w-md mx-auto w-full">
               <div className="mb-8">
                 <h2 className="text-3xl font-bold text-white mb-2">Sign in</h2>
-                <p className="text-gray-400">View latest updates and developments in CTI</p>
+                <p className="text-[#737373]">
+                  View latest updates and developments in CTI
+                </p>
               </div>
 
-              {error && <div className="mb-4 text-red-500 text-sm font-medium">{error}</div>}
+              {error && (
+                <div className="mb-4 text-red-500 text-sm font-medium">
+                  {error}
+                </div>
+              )}
 
               <form onSubmit={handleSignIn} className="space-y-6">
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-medium text-gray-300 mb-2"
+                  >
                     Email
                   </label>
                   <input
@@ -142,14 +164,21 @@ const Login = () => {
                     className={`w-full px-4 py-3 bg-zinc-700 border ${
                       errors.email ? "border-red-500" : "border-zinc-600"
                     } rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 ${
-                      errors.email ? "focus:ring-red-500" : "focus:ring-teal-500"
+                      errors.email
+                        ? "focus:ring-red-500"
+                        : "focus:ring-teal-500"
                     } focus:border-transparent transition-all duration-200`}
                     placeholder="Enter your email"
                   />
-                  {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
+                  {errors.email && (
+                    <p className="text-red-500 text-xs mt-1">{errors.email}</p>
+                  )}
                 </div>
                 <div>
-                  <label htmlFor="password" className="block text-sm font-medium text-gray-300 mb-2">
+                  <label
+                    htmlFor="password"
+                    className="block text-sm font-medium text-gray-300 mb-2"
+                  >
                     Password
                   </label>
                   <div className="relative">
@@ -161,7 +190,9 @@ const Login = () => {
                       className={`w-full px-4 py-3 pr-12 bg-zinc-700 border ${
                         errors.password ? "border-red-500" : "border-zinc-600"
                       } rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 ${
-                        errors.password ? "focus:ring-red-500" : "focus:ring-teal-500"
+                        errors.password
+                          ? "focus:ring-red-500"
+                          : "focus:ring-teal-500"
                       } focus:border-transparent transition-all duration-200`}
                       placeholder="Enter your password"
                     />
@@ -170,16 +201,24 @@ const Login = () => {
                       onClick={() => setShowPassword(!showPassword)}
                       className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-300 transition-colors"
                     >
-                      {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                      {showPassword ? (
+                        <EyeOff className="w-5 h-5" />
+                      ) : (
+                        <Eye className="w-5 h-5" />
+                      )}
                     </button>
                   </div>
-                  {errors.password && <p className="text-red-500 text-xs mt-1">{errors.password}</p>}
+                  {errors.password && (
+                    <p className="text-red-500 text-xs mt-1">
+                      {errors.password}
+                    </p>
+                  )}
                 </div>
 
                 <div className="text-right">
                   <button
                     type="button"
-                    className="text-teal-400 hover:text-teal-300 text-sm font-medium transition-colors"
+                    className="text-[#16A374] hover:text-teal-300 text-sm font-medium transition-colors"
                   >
                     Forgot password?
                   </button>
@@ -188,7 +227,7 @@ const Login = () => {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full bg-emerald-600 hover:bg-emerald-700 disabled:opacity-50 text-white font-semibold py-3 px-4 rounded-lg transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98]"
+                  className="w-full bg-[#16A374] hover:bg-emerald-600 disabled:opacity-50 text-white font-semibold py-3 px-4 rounded-lg transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98]"
                 >
                   {loading ? "Signing in..." : "Sign in"}
                 </button>
@@ -205,7 +244,7 @@ const Login = () => {
                 <button
                   type="button"
                   onClick={handleGoogleSignIn}
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center space-x-3"
+                  className="w-full bg-[#4285F4] hover:bg-blue-500 text-white font-semibold py-3 px-4 rounded-lg transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center space-x-3"
                 >
                   <svg className="w-5 h-5" viewBox="0 0 24 24">
                     <path
@@ -232,7 +271,7 @@ const Login = () => {
               <div className="mt-8 text-center">
                 <span className="text-gray-400">Don't have an account? </span>
                 <button
-                  className="text-teal-400 hover:text-teal-300 font-medium transition-colors "
+                  className="text-[#16A374] hover:text-teal-300 font-medium transition-colors "
                   onClick={() => navigate("/signup")}
                 >
                   Sign up
