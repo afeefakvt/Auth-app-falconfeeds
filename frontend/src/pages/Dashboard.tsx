@@ -8,16 +8,22 @@ import {
   LayoutGrid,
 } from "lucide-react";
 import Sidebar from "../components/Sidebar";
-import logo from '../assets/logo.png'
+import logo from '../assets/logo.png';
+import { useAuthStore } from "../store/authStore";
 
 const Dashboard: React.FC = () => {
   const [activeTab, setActiveTab] = useState("overview");
+  const {user}  = useAuthStore();
 
   const mobileTabItems = [
     { id: "overview", icon: LayoutGrid, label: "OVERVIEW" },
     { id: "feed", icon: FileText, label: "ALL FEED" },
     { id: "profiles", icon: Users, label: "PROFILES" },
   ];
+
+  const userName = user?.firstName || "Guest";
+  const userInitial = userName.charAt(0).toUpperCase();
+  
 
   return (
     <div className="min-h-screen bg-zinc-900 text-white flex">
@@ -37,9 +43,9 @@ const Dashboard: React.FC = () => {
 
           {/* Right Actions */}
           <div className="flex items-center space-x-4">
-            <button className="flex items-center space-x-2 px-4 py-2 bg-yellow-600 hover:bg-yellow-700 rounded-lg transition-colors">
-              <Crown className="w-4 h-4" />
-              <span className="text-sm font-medium">UPGRADE TO PREMIUM</span>
+            <button className="flex items-center space-x-2 px-4 py-2 bg-[#1F1D17] hover:bg-yellow-700 rounded-lg transition-colors">
+              <Crown className="w-4 h-4 text-[#FCD34D]" />
+              <span className="text-sm font-medium text-[#FCD34D]">UPGRADE TO PREMIUM</span>
             </button>
 
             <button className="flex items-center space-x-2 px-4 py-2 text-gray-300 hover:text-white transition-colors">
@@ -53,7 +59,7 @@ const Dashboard: React.FC = () => {
             </button>
 
             <div className="w-10 h-10 bg-emerald-500 rounded-full flex items-center justify-center">
-              <span className="text-white font-bold">M</span>
+              <span className="text-white font-bold">{userInitial}</span>
             </div>
           </div>
         </header>
@@ -71,13 +77,13 @@ const Dashboard: React.FC = () => {
 
           {/* Right Actions */}
           <div className="flex items-center space-x-3">
-            <button className="flex items-center space-x-1 px-3 py-1 bg-yellow-600 hover:bg-yellow-700 rounded text-xs font-medium transition-colors">
+            <button className="flex items-center space-x-1 px-3 py-1 bg-[#1F1D17] hover:bg-yellow-700 rounded text-xs font-medium transition-colors">
               <Crown className="w-3 h-3" />
               <span>UPGRADE</span>
             </button>
 
             <div className="w-8 h-8 bg-emerald-500 rounded-full flex items-center justify-center">
-              <span className="text-white font-bold text-sm">M</span>
+              <span className="text-white font-bold text-sm">{userInitial}</span>
             </div>
           </div>
         </header>
@@ -119,10 +125,10 @@ const Dashboard: React.FC = () => {
         {/* Content */}
         <main className="flex-1 p-6 lg:p-12">
           <div className="max-w-4xl">
-            <h1 className="text-4xl lg:text-5xl font-bold text-gray-300 mb-4">
-              Hi Murdock,
+            <h1 className="text-4xl lg:text-5xl font-bold text-[#262626] mb-4">
+              Hi {userName},  
             </h1>
-            <p className="text-lg text-gray-400 mb-12">
+            <p className="text-lg text-[#717171] mb-12">
               Here's your summary for the day
             </p>
           </div>

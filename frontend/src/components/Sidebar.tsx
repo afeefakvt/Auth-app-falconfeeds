@@ -53,7 +53,7 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab = 'overview', onTabChange }
               onClick={() => handleItemClick(item.id)}
               className={`w-full flex flex-col items-center space-y-2 px-4 py-6 rounded-lg text-center transition-all duration-200 ${
                 isActive 
-                  ? 'bg-blue-600 text-white' 
+                  ? 'bg-[#17171F] text-white' 
                   : 'text-gray-400 hover:text-white hover:bg-zinc-800'
               }`}
             >
